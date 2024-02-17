@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit</title>
+</head>
+<body>
+    <form th:method="PATCH" th:action="@{/people/{id}(id=${person.getId()})}" th:object="${person}" >
+
+        <label for="input_name">Input your name here: </label>
+        <input type="text" th:field="*{name}" id="input_name"/>
+        <div style="color:red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Some name error</div>
+        <br>
+
+        <label for="age_input">Input your age here: </label>
+        <input type="text" th:field="*{age}" id="age_input"/>
+        <div style="color:red" th:if="${#fields.hasErrors('age')}" th:errors="*{age}">Some age error</div>
+
+        <br>
+
+        <label for="email_input">Input your email here: </label>
+        <input type="text" th:field="*{email}" id="email_input"/>
+        <div style="color:red" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Some email error</div>
+
+        <br>
+
+        <label for="address_input">Input your address here: </label>
+        <input type="text" th:field="*{address}" id="address_input"/>
+        <div style="color:red" th:if="${#fields.hasErrors('address')}" th:errors="*{address}">Some address error</div>
+        <br>
+
+        <input type="submit" value="Edit!">
+
+    </form>
+</body>
+</html>
