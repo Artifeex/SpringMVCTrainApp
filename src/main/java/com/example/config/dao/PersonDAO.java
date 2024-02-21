@@ -49,6 +49,11 @@ public class PersonDAO {
     @Transactional
     public void update(int id, Person updatedPerson) {
         Session session = sessionFactory.getCurrentSession();
+
+        //альтернативный вариант:
+        //Person personToBeUpdated = session.get(id); // personToBeUpdated - будет в состоянии persistent
+        //personToBeUpdated.setId(id);
+        //personToBeUpdated.setName(updatedPerson.getName()); и т.д.
         updatedPerson.setId(id);
         session.update(updatedPerson);
     }
@@ -56,6 +61,7 @@ public class PersonDAO {
     @Transactional
     public void delete(int id) {
         Session session = sessionFactory.getCurrentSession();
+        //альтернатинвый вариань: session.delete(session.get(Person.class, id));
         session.createQuery("delete from Person where id=:id").setParameter("id", id).executeUpdate();
     }
 
