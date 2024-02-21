@@ -23,7 +23,7 @@ public class PersonValidator implements Validator {
         return Person.class.equals(aClass); //валидатор будет вызываться только для валидации Person
     }
 
-    //Spring будет вызывать этот метод самосотоятельно, когда с формы будет приходить объект Person
+    //Мы вызываем этот метод, когда с формы в ModelAttribute Person person приходит объект
     @Override
     public void validate(Object o, Errors errors) {
         Person person = (Person) o;
