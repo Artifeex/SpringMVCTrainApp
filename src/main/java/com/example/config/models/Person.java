@@ -1,9 +1,11 @@
 package com.example.config.models;
 
 import org.hibernate.annotations.Columns;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
+import java.util.Date;
 
 @Entity
 @Table(name = "person")
@@ -27,6 +29,16 @@ public class Person {
     private String address;
 
 
+    @Column(name = "date_of_birth")
+    @Temporal(value = TemporalType.DATE)
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
+    private Date dateOfBirth;
+
+    @Column(name = "created_at")
+    @Temporal(value = TemporalType.TIMESTAMP)
+    private Date createdAt;
+
+
     public Person(String name, int age, String email, String address) {
         this.name = name;
         this.age = age;
@@ -44,6 +56,22 @@ public class Person {
 
     public String getEmail() {
         return email;
+    }
+
+    public Date getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+    public void setDateOfBirth(Date dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
+    }
+
+    public Date getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
     }
 
     public void setEmail(String email) {
